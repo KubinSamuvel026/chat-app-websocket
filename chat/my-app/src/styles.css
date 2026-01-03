@@ -1,0 +1,38 @@
+.app {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-template-areas:
+    "nav nav"
+    "sidebar chat";
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .app {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "nav"
+      "chat";
+  }
+  .sidebar { display: none; }
+}
+
+.nav { grid-area: nav; background: var(--panel-alt); border-bottom: 1px solid var(--divider); }
+.sidebar { grid-area: sidebar; background: var(--panel); border-right: 1px solid var(--divider); }
+.chat { grid-area: chat; background: var(--panel); }
+
+.scroll {
+  overflow: auto;
+  scrollbar-color: var(--scrollbar) transparent;
+  scrollbar-width: thin;
+}
+.scroll::-webkit-scrollbar { width: 8px; }
+.scroll::-webkit-scrollbar-thumb { background: var(--scrollbar); border-radius: 4px; }
+.scroll::-webkit-scrollbar-track { background: transparent; }
